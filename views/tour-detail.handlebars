@@ -1,0 +1,42 @@
+<div class="tour-container">
+    <div class="tour-upper-section">
+        <h1>{{title}}</h1>
+        <p class="tour-text">Tour Guide By <span>{{ guide.user_name }}</span> </p>
+        <div class="row">
+            <div class="col-sm-4 level-wrap">
+                <p>Difficulty Level: {{ difficulty_level }}</p>
+            </div>
+            <div class="col-sm-4 category-wrap">
+                <p>Category: {{ category }}</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-8 tour-img-wrap">
+            {{!-- add {{file_name}} to src later --}}
+            <img class="tour-img" src="./img/98.jpg" alt="tour image">
+        </div>
+        <div class="col-sm-4">
+            <div class="book-wrap">
+                <p>From A$<span>{{ cost }}</span> per person</p>
+                <p>Max number of participants:<span>{{ person_limit }}</span></p>
+                <div class="bookbtn-wrap">
+                    <button class="btn btn-warning bookbtn">BOOK NOW</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="text-wrap">
+        <p class="date-text"><span>Date:</span>{{date}}</p>
+        <p class="place-text"><span>Place:</span>{{place}}</p>
+        <p class="description-text"><span>Description:</span>{{description}}</p>
+    </div>
+
+    <!-- <form action="">
+            <input type="file" name="imageFile" accept="image/*">
+            <input type="submit">
+        </form> -->
+
+</div>
