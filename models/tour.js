@@ -5,7 +5,7 @@ const sequelize = require('../config/connection.js');
 class Tour extends Model { }
 
 Tour.init(
-    {
+  {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -16,35 +16,42 @@ Tour.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    place: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     difficulty_level: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     description: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     person_limit: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     cost: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    // TODO: add relations between tours and users
-    // references: {
-    //   foreignKey: user_id,
-    // }
-},
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+  },
 
   {
     sequelize,
