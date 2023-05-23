@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tour } = require('../../models/tour');
+const { Tour } = require('../models/tour');
 // const withAuth = require('../../utils/auth');
 
 

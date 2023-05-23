@@ -40,6 +40,10 @@ Tour.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    // TODO: add relations between tours and users
+    // references: {
+    //   foreignKey: user_id,
+    // }
 },
 
   {

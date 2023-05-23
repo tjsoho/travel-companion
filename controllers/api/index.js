@@ -1,3 +1,4 @@
+const router = require('express').Router();
 const tourRoutes = require('./tour-routes');
 const userRoutes = require('./user-routes');
 
