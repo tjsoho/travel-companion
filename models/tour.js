@@ -33,7 +33,9 @@ Tour.init(
       allowNull: false,
     },
     description: {
+
       type: DataTypes.STRING(3000),
+
       allowNull: false,
     },
     person_limit: {
