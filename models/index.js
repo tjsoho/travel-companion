@@ -1,5 +1,5 @@
-const User = require('../models/user');
-const Tour = require('../models/tour');
+const User = require('./user');
+const Tour = require('./tour');
 
 User.hasMany(Tour, {
   foreignKey: 'user_id',
