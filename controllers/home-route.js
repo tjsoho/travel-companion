@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tour } = require('../models/tour');
+const { Tour } = require('../models');
 // const withAuth = require('../../utils/auth');
 
 
@@ -13,10 +13,14 @@ router.get('/tours', async (req, res) => {
       const tours = await Tour.findAll ({
        
       });
-  
+  const tourData = tours.map((tours) => tours.get({plain: true}));
       //TO DO: res.render page of all tours
-
-      res.status(200).json(tours);
+      console.log(tourData)
+      res.render('top', {
+        tourData,
+        // logged_in: req.session.logged_in,
+      });
+      // res.status(200).json(tourData);
     } catch (err) {
       res.status(400).json(err);
     }
@@ -43,4 +47,14 @@ router.get('/tours', async (req, res) => {
     }
   });
 
+  // router.get('/login', (req, res,) => {
+  //   if (req.session.logged_in) {
+  //     res.redirect('/');
+  //     return;
+  //   }
+  
+  //   res.render('login');
+  // });
+
+  
   module.exports = router;
