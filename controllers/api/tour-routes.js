@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Tour } = require('../../models');
+
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     console.log("posting!----------------------")
     const newTour = await Tour.create({
@@ -12,11 +13,12 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newTour);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const tourData = await Tour.update(req.body, {
       where: {
@@ -37,8 +39,9 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
+
     console.log("hello")
     const deletedTour = await Tour.destroy({
       where: {
@@ -46,6 +49,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         // user_id: req.session.user_id,
       },
     });
+
     console.log(deletedTour)
     if (!deletedTour) {
       res.status(404).json({ message: 'No tour found with this id!' });

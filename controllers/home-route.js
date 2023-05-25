@@ -37,12 +37,8 @@ router.get('/tours', async (req, res) => {
 
 router.get('/tours/:id', async (req, res) => {
   try {
-    const tourData = await Tour.findAll({
-      where: {
-        id: req.params.id,
-      },
-    });
-
+    const tours = await Tour.findByPk(req.params.id);
+    const tourData = tours.get({ plain: true });
     if (!tourData) {
       res.status(404).json({ message: 'No tour found with this id!' });
       return;
