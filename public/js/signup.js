@@ -5,9 +5,9 @@ const signupFormHandler = async (event) => {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
-    if (email && password) {
+    if (user_name && email && password) {
         // api router need to check 
-        const response = await fetch('/api/users/signup', {
+        const response = await fetch('/api/user', {
             method: 'POST',
             body: JSON.stringify({ user_name, email, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -15,7 +15,7 @@ const signupFormHandler = async (event) => {
 
         if (response.ok) {
             // api router need to check: must go user page 
-            document.location.replace('/users/login');
+            document.location.replace('/login');
         } else {
             alert('Failed to sing up');
         }
