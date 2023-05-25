@@ -4,7 +4,7 @@ const { User } = require('../../models')
 // need to post, put and delete user details (email, password)
 // register signup, 
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {

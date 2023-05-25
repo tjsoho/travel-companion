@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
 
     if (user_name && email && password) {
         // api router need to check 
-        const response = await fetch('/api/user', {
+        const response = await fetch('/api/user/signup', {
             method: 'POST',
             body: JSON.stringify({ user_name, email, password }),
             headers: { 'Content-Type': 'application/json' },
