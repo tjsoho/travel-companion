@@ -1,13 +1,13 @@
 <div class="tour-container">
     <div class="tour-upper-section">
-        <h1>{{tour.title}}</h1>
-        <p class="tour-text">Tour Guide By <span>{{ tour.user.name }}</span> </p>
+        <h1>{{title}}</h1>
+        <p class="tour-text">Tour Guide By <span>{{ user.name }}</span> </p>
         <div class="row">
             <div class="col-sm-4 level-wrap">
-                <p>Difficulty Level: {{ tour.difficulty_level }}</p>
+                <p>Difficulty Level: {{ difficulty_level }}</p>
             </div>
             <div class="col-sm-4 category-wrap">
-                <p>Category: {{ tour.category }}</p>
+                <p>Category: {{ category }}</p>
             </div>
         </div>
 
@@ -15,12 +15,12 @@
     <div class="row">
         <div class="col-sm-8 tour-img-wrap">
 
-            <img class="tour-img" src="{{ tour.img_name }}" alt="tour image">
+            <img class="tour-img" src="{{ img_name }}" alt="tour image">
         </div>
         <div class="col-sm-4">
             <div class="book-wrap">
-                <p>From A$<span>{{ tour.cost }}</span> per person</p>
-                <p>Max number of participants:<span>{{ tour.person_limit }}</span></p>
+                <p>From A$<span>{{ cost }}</span> per person</p>
+                <p>Max number of participants:<span>{{ person_limit }}</span></p>
                 <div class="bookbtn-wrap">
                     <button class="btn btn-warning bookbtn">BOOK NOW</button>
                 </div>
@@ -29,8 +29,8 @@
         </div>
     </div>
     <div class="text-wrap">
-        <p class="place-text"><span>Place:</span>{{tour.place}}</p>
-        <p class="description-text"><span>Description:</span>{{tour.description}}</p>
+        <p class="place-text"><span>Place:</span>{{place}}</p>
+        <p class="description-text"><span>Description:</span>{{description}}</p>
     </div>
 
 </div>
