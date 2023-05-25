@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { Tour } = require('../../models/tour');
+const { Tour } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   try {
+    console.log("posting!----------------------")
     const newTour = await Tour.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -38,22 +39,24 @@ router.put('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const tourData = await Project.destroy({
+    console.log("hello")
+    const deletedTour = await Tour.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       },
     });
-
-    if (!tourData) {
-      res.status(404).json({ message: 'No project found with this id!' });
+    console.log(deletedTour)
+    if (!deletedTour) {
+      res.status(404).json({ message: 'No tour found with this id!' });
       return;
     }
 
-    res.status(200).json(tourData);
+    res.status(200).json(deletedTour);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
