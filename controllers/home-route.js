@@ -32,6 +32,9 @@ router.get('/tours', async (req, res) => {
   }
 });
 
+
+
+
 router.get('/tours/:id', async (req, res) => {
   try {
     const tourData = await Tour.findAll({
