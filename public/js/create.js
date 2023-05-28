@@ -33,26 +33,26 @@ const newFormHandler = async (event) => {
     }
 };
 
-// const delButtonHandler = async (event) => {
-//     if (event.target.hasAttribute('data-id')) {
-//         const id = event.target.getAttribute('data-id');
+const delButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
 
-//         const response = await fetch(`/api/tour/${id}`, {
-//             method: 'DELETE',
-//         });
+        const response = await fetch(`/api/tour/${id}`, {
+            method: 'DELETE',
+        });
 
-//         if (response.ok) {
-//             document.location.replace('/create');
-//         } else {
-//             alert('Failed to delete tour');
-//         }
-//     }
-// };
+        if (response.ok) {
+            document.location.replace('/create');
+        } else {
+            alert('Failed to delete tour');
+        }
+    }
+};
 
 document
     .querySelector('#user_id')
     .addEventListener('submit', newFormHandler);
 
-// document
-//     .querySelector('.delete-btn')
-//     .addEventListener('click', delButtonHandler);
+document
+    .querySelector('.delete-btn')
+    .addEventListener('click', delButtonHandler);
