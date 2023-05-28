@@ -4,7 +4,7 @@ const { Tour } = require('../../models');
 
 const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     console.log("posting!----------------------")
     const newTour = await Tour.create({

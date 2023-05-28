@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Tour } = require('../models');
+const { Tour, User } = require('../models');
+const withAuth = require('../utils/auth');
 // const withAuth = require('../../utils/auth');
 
 
@@ -76,5 +77,12 @@ router.get('/signup', (req, res,) => {
     });
 });
 
+// get and render create tour form
+router.get('/userpage', withAuth, async (req, res) =>{
+  res.render('create', {
+    loggedIn: req.session.logged_in,
+    user_id: req.session.user_id
+  });
+});
 
 module.exports = router;
