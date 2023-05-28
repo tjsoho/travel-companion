@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { parse } = require('handlebars');
-const { Tour } = require('../../models');
+const { Tour, User } = require('../../models');
 
 const withAuth = require('../../utils/auth');
 
@@ -11,7 +11,7 @@ router.post('/', withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-
+    console.log(newTour);
     res.status(200).json(newTour);
   } catch (err) {
     console.log(err);
@@ -94,7 +94,7 @@ router.get('/location/:location', async (req, res) => {
       res.status(404).json({ message: 'No tour found with this location!' });
       return;
     }
-    
+
     res.status(200).json(tourData);
   } catch (err) {
     res.status(500).json(err);
@@ -130,7 +130,7 @@ router.delete('/:id', async (req, res) => {
     const deletedTour = await Tour.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
+        user_id: req.session.user_id,
       },
     });
 

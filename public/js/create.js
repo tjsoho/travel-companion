@@ -11,14 +11,14 @@ const newFormHandler = async (event) => {
     const person_limit = document.querySelector('#person-limit').value.trim();
     const cost = document.querySelector('#cost').value.trim();
     // created user_id var
-    const user_id = document.querySelector('#user_id').getAttribute("data-user-id");
+    // const user_id = document.querySelector('#user_id').getAttribute("data-user-id");
 
-// included user_id param to if condition and to body because it is needed
-    if (title && description && location && place && difficulty_level && category && img_name && person_limit && cost && user_id) {
+    // included user_id param to if condition and to body because it is needed
+    if (title && description && location && place && difficulty_level && category && img_name && person_limit && cost) {
         const response = await fetch(`/api/tour`, {
             method: 'POST',
             body: JSON.stringify(
-                { title, description, location, place, difficulty_level, category, img_name, person_limit, cost, user_id }
+                { title, description, location, place, difficulty_level, category, img_name, person_limit, cost }
             ),
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const newFormHandler = async (event) => {
         });
         console.log(response);
         if (response.ok) {
-            document.location.replace('/tours');
+            document.location.replace('/userpage');
         } else {
             alert('Failed to create tour');
         }
@@ -42,7 +42,7 @@ const delButtonHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/create');
+            document.location.replace('/userpage');
         } else {
             alert('Failed to delete tour');
         }
@@ -50,7 +50,7 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('#user_id')
+    .querySelector('.create-btn')
     .addEventListener('submit', newFormHandler);
 
 document

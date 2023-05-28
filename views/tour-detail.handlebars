@@ -1,7 +1,7 @@
 <div class="tour-container">
     <div class="tour-upper-section">
         <h1>{{tourData.title}}</h1>
-        <p class="tour-text">Tour Guide By <span>{{ tourData.user.name }}</span> </p>
+        <p class="tour-text">Tour Guide By <span>{{ tourData.user.user_name }}</span> </p>
         <div class="row">
             <div class="col-sm-4 level-wrap">
                 <p>Difficulty Level: {{ tourData.difficulty_level }}</p>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-4">
             <div class="book-wrap">
-                <p>From A$<span>{{ cost }}</span> per person</p>
+                <p>From A$<span>{{tourData.cost }}</span> per person</p>
                 <p>Max number of participants:<span>{{ tourData.person_limit }}</span></p>
                 <div class="bookbtn-wrap">
                     <button class="btn btn-warning bookbtn">BOOK NOW</button>

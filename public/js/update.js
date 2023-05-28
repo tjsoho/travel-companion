@@ -3,6 +3,7 @@ const updateFormHandler = async (event) => {
 
     event.preventDefault();
     if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
 
         const title = document.querySelector('#title').value.trim();
         const description = document.querySelector('#description').value.trim();
@@ -25,7 +26,7 @@ const updateFormHandler = async (event) => {
                 });
 
             if (response.ok) {
-                document.location.replace('/create');
+                document.location.replace('/userpage');
             } else {
                 alert('Failed to update tour');
             }
@@ -42,7 +43,7 @@ const delButtonHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/create');
+            document.location.replace('/userpage');
         } else {
             alert('Failed to delete tour');
         }

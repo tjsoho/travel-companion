@@ -64,6 +64,10 @@ a {
 
 }
 
+.login-wrap {
+    margin-right: 10px;
+}
+
 /* login and signup */
 .input-page-container {
     margin: 30px 50px;
@@ -224,6 +228,9 @@ i {
 }
 
 /* create */
+.my-tour-list {
+    margin-top: 50px;
+}
 
 .card-img-top {
     width: 100%;
@@ -244,6 +251,14 @@ i {
 
 .description {
     width: 100%;
+}
+
+.update-btn {
+    margin-top: 5px;
+}
+
+.delete-btn {
+    margin-top: 5px;
 }
 
 @media screen and (max-width: 650px) {
@@ -279,4 +294,23 @@ i {
     .rights-wrap {
         padding-top: 30px;
     }
+}
+
+@media screen and (max-width: 570px) {
+
+    /* create */
+    .delete-btn {
+        margin-top: 0;
+    }
+
+    .update-btn {
+        margin-top: 0;
+    }
+
+    .my-tour-list {
+        text-align: center;
+    }
+
+
+
 }

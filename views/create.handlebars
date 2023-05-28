@@ -3,7 +3,7 @@
     <p>Create your own tour!</p>
     <h3 class="form-title">LET'S CREATE!</h3>
     <br />
-    <form class="create-form form-group" id = 'user_id' data-user-id="{{user_id}}">
+    <form class="create-form form-group" id='user_id' data-user-id="{{user_id}}">
         <label for="tour-title">
             TOUR TITLE:
         </label>
@@ -102,7 +102,7 @@
         <input class="form-control" id="cost" name="cost" placeholder="100">
         <br />
         <div class="btn-wrap">
-            <button value="Submit" type="submit" class="btn btn-warning">
+            <button value="Submit" type="submit" class="btn btn-warning create-btn">
                 SUBMIT
             </button>
         </div>
@@ -111,17 +111,21 @@
     {{#if tours.length}}
     <div class="my-tour-list">
         <h3 class="form-title">MY TOUR LIST</h3>
-        <div class="card-group row">
-            {{#each tours as |tour|}}
-            <div class="card col-sm-4" style="width: 18rem">
-                <img class="card-img-top img-thumbnail" src="./img/{{tour.img_name}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{tour.title}}</h5>
-                    <a href="/update/{{tour.id}}" class="btn btn-warning">UPDATE</a>
-                    <button class="btn btn-primary delete-btn" data-id="{{tour.id}}">DELETE</button>
+        <div class="card-group-wrap">
+            <div class="card-group row">
+                {{#each tours as |tour|}}
+                <div class="card col-sm-4" style="width: 18rem">
+                    <img class="card-img-top img-thumbnail" src="./img/{{tour.img_name}}" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/tours/{{tour.id}}">
+                            <h5 class="card-title">{{tour.title}}</h5>
+                        </a>
+                        <a href="/update/{{tour.id}}" class="btn btn-warning update-btn">UPDATE</a>
+                        <button class="btn btn-primary delete-btn" data-id="{{tour.id}}">DELETE</button>
+                    </div>
                 </div>
+                {{/each}}
             </div>
-            {{/each}}
         </div>
     </div>
     {{/if}}
