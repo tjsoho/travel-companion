@@ -1,26 +1,26 @@
 <div class="tour-container">
     <div class="tour-upper-section">
-        <h1>{{title}}</h1>
-        <p class="tour-text">Tour Guide By <span>{{ user.name }}</span> </p>
+        <h1>{{tourData.title}}</h1>
+        <p class="tour-text">Tour Guide By <span>{{ tourData.user.name }}</span> </p>
         <div class="row">
             <div class="col-sm-4 level-wrap">
-                <p>Difficulty Level: {{ difficulty_level }}</p>
+                <p>Difficulty Level: {{ tourData.difficulty_level }}</p>
             </div>
             <div class="col-sm-4 category-wrap">
-                <p>Category: {{ category }}</p>
+                <p>Category: {{ tourData.category }}</p>
             </div>
         </div>
 
     </div>
     <div class="row">
         <div class="col-sm-8 tour-img-wrap">
-
-            <img class="tour-img" src="{{ img_name }}" alt="tour image">
+            {{!-- this is the correct path for the img to be displayed --}}
+            <img class="tour-img" src="/img/{{tourData.img_name }}" alt="tour image">
         </div>
         <div class="col-sm-4">
             <div class="book-wrap">
                 <p>From A$<span>{{ cost }}</span> per person</p>
-                <p>Max number of participants:<span>{{ person_limit }}</span></p>
+                <p>Max number of participants:<span>{{ tourData.person_limit }}</span></p>
                 <div class="bookbtn-wrap">
                     <button class="btn btn-warning bookbtn">BOOK NOW</button>
                 </div>
@@ -29,9 +29,9 @@
         </div>
     </div>
     <div class="text-wrap">
-        <p class="place-text"><span>City:</span>{{location}}</p>
-        <p class="place-text"><span>Place:</span>{{place}}</p>
-        <p class="description-text"><span>Description:</span>{{description}}</p>
+        <p class="place-text"><span>City:</span>{{tourData.location}}</p>
+        <p class="place-text"><span>Place:</span>{{tourData.place}}</p>
+        <p class="description-text"><span>Description:</span>{{tourData.description}}</p>
     </div>
 
 </div>

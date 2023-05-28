@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Tour } = require('../models');
+const { Tour, User } = require('../models');
+const withAuth = require('../utils/auth');
 // const withAuth = require('../../utils/auth');
 
 
@@ -13,7 +14,24 @@ router.get('/', async (req, res) => {
   res.redirect('/tours');
 
 });
+router.get('/tours/:id', async (req, res) => {
+  try {
+    const tours = await Tour.findByPk(req.params.id);
+    const tourData = tours.get({ plain: true });
+    if (!tourData) {
+      res.status(404).json({ message: 'No tour found with this id!' });
+      return;
+    }
 
+    res.render('tour-detail', {
+      tourData,
+      loggedIn: req.session.logged_in,
+    });
+    // res.status(200).json(tourData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 router.get('/tours', async (req, res) => {
   try {
     const tours = await Tour.findAll({
@@ -35,24 +53,7 @@ router.get('/tours', async (req, res) => {
 
 
 
-router.get('/tours/:id', async (req, res) => {
-  try {
-    const tours = await Tour.findByPk(req.params.id);
-    const tourData = tours.get({ plain: true });
-    if (!tourData) {
-      res.status(404).json({ message: 'No tour found with this id!' });
-      return;
-    }
 
-    res.render('tour-detail', {
-      tourData,
-      loggedIn: req.session.logged_in,
-    });
-    res.status(200).json(tourData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 router.get('/login', (req, res,) => {
   if (req.session.logged_in) {
@@ -76,5 +77,12 @@ router.get('/signup', (req, res,) => {
     });
 });
 
+// get and render create tour form
+router.get('/userpage', withAuth, async (req, res) =>{
+  res.render('create', {
+    loggedIn: req.session.logged_in,
+    user_id: req.session.user_id
+  });
+});
 
 module.exports = router;

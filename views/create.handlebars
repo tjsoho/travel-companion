@@ -3,7 +3,7 @@
     <p>Create your own tour!</p>
     <h3 class="form-title">LET'S CREATE!</h3>
     <br />
-    <form class="create-form form-group">
+    <form class="create-form form-group" id = 'user_id' data-user-id="{{user_id}}">
         <label for="tour-title">
             TOUR TITLE:
         </label>
@@ -21,11 +21,11 @@
             <label for="city">
                 CITY:
             </label>
-            <select name=”item” class="form-control" id="city">
-                <option selected> City </option>
-                <option value=”item1”>Sydney</option>
-                <option value=”item2”>Brisbane</option>
-                <option value=”item3”>Melbourne</option>
+            <select class="form-control" id="city">
+                <option> City </option>
+                <option>Sydney</option>
+                <option>Brisbane</option>
+                <option>Melbourne</option>
             </select>
         </div>
 
@@ -40,11 +40,11 @@
             <label for="place">
                 DIFFICULTY:
             </label>
-            <select name=”item” class="form-control" id="difficulty">
+            <select name="item" class="form-control" id="difficulty">
                 <option selected> Difficulty </option>
-                <option value=”item1”>Easy</option>
-                <option value=”item2”>Moderate</option>
-                <option value=”item3”>Hard</option>
+                <option>Easy</option>
+                <option>Moderate</option>
+                <option>Hard</option>
             </select>
         </div>
         <br />
@@ -53,13 +53,13 @@
                 CATEGORY:
             </label>
             <br />
-            <select name=”item” class="form-control" id="category">
+            <select class="form-control" id="category">
                 <option selected> Category </option>
-                <option value=”item1”>Site Seeing</option>
-                <option value=”item2”>Escape the City</option>
-                <option value=”item3”>Physical Activity</option>
-                <option value=”item4”>Food and Drink</option>
-                <option value=”item5”>Sport and Culture</option>
+                <option>Site Seeing</option>
+                <option>Escape the City</option>
+                <option>Physical Activity</option>
+                <option>Food and Drink</option>
+                <option>Sport and Culture</option>
             </select>
         </div>
         <br />
@@ -68,23 +68,23 @@
                 TOUR IMAGE:
             </label>
             <br />
-            <select name=”item” class="form-control" id="image">
-                <option selected> Image Name </option>
-                <option value=”item1”>site_seeing(art).jpg</option>
-                <option value=”item2”>site_seeing(city).jpg</option>
-                <option value=”item3”>site_seeing(harbour).jpg</option>
-                <option value=”item4”>site_seeing(market).jpg</option>
-                <option value=”item6”>escape_the_city(animal).jpg</option>
-                <option value=”item7”>escape_the_city(mountain).jpg</option>
-                <option value=”item8”>physical_activity(bike).jpg</option>
-                <option value=”item9”>physical_activity(kayak).jpg</option>
-                <option value=”item10”>physical_activity(surf).jpg</option>
-                <option value=”item11”>food_and_drink(cafe).jpg</option>
-                <option value=”item12”>food_and_drink(group).jpg</option>
-                <option value=”item13”>food_and_drink(pub).jpg</option>
-                <option value=”item14”>sport_and_culture(studium).jpg</option>
-                <option value=”item15”>sport_and_culture(studium2).jpg</option>
-                <option value=”item16”>sport_and_culture(studium3).jpg</option>
+            <select class="form-control" id="image">
+                <option> Image Name </option>
+                <option>site_seeing(art).jpg</option>
+                <option>site_seeing(city).jpg</option>
+                <option>site_seeing(harbour).jpg</option>
+                <option>site_seeing(market).jpg</option>
+                <option>escape_the_city(animal).jpg</option>
+                <option>escape_the_city(mountain).jpg</option>
+                <option>physical_activity(bike).jpg</option>
+                <option>physical_activity(kayak).jpg</option>
+                <option>physical_activity(surf).jpg</option>
+                <option>food_and_drink(cafe).jpg</option>
+                <option>food_and_drink(group).jpg</option>
+                <option>food_and_drink(pub).jpg</option>
+                <option>sport_and_culture(studium).jpg</option>
+                <option>sport_and_culture(studium2).jpg</option>
+                <option>sport_and_culture(studium3).jpg</option>
 
             </select>
         </div>

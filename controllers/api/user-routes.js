@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models')
+const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // need to post, put and delete user details (email, password)
 // register signup, 
@@ -86,7 +87,6 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 
 
