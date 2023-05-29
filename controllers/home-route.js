@@ -54,7 +54,7 @@ router.get('/', async (req, res) => {
     });
     const tourData = tours.map((tours) => tours.get({ plain: true }));
     //TO DO: res.render page of all tours
-    console.log(tourData)
+    // console.log(tourData);
     res.render('top', {
       tourData,
       loggedIn: req.session.logged_in,
@@ -131,7 +131,7 @@ router.get('/update/:id', withAuth, async (req, res) => {
     });
 
     const tour = tourData.get({ plain: true });
-    console.log(tour);
+    // console.log(tour);
 
     res.render('update', {
       ...tour,

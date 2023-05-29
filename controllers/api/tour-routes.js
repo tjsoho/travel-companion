@@ -6,7 +6,6 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    console.log("posting!----------------------")
     const newTour = await Tour.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -21,7 +20,7 @@ router.post('/', withAuth, async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    console.log("getting!----------------------")
+    // console.log("getting!----------------------")
     const tourData = await Tour.findAll({
       // where: {
       //   user_id: req.session.user_id,
@@ -126,11 +125,12 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
 
-    console.log("hello")
+    // console.log("hello")
     const deletedTour = await Tour.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
+        // this is why delete wasn't working on insomnia
       },
     });
 
@@ -142,6 +142,7 @@ router.delete('/:id', async (req, res) => {
 
     res.status(200).json(deletedTour);
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
