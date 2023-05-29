@@ -21,30 +21,37 @@
             <div class="col-4">
                 <a href="/"><img id="logo" class="logo" src="./img/logotest.png" alt="logo"></a>
             </div>
-            <div class="col-4 top-nav-wrap">
+
+            <div class="col-4 nav-wrap">
+
                 {{#if logged_in}}
                 <div class="row">
-                    <div class="col-7 login-wrap">
-                        <a class="create-text" href="/userpage">Create Tour</a>
+                    <div class="col-3">
+                        <a href="/" id="home-btn">Home</a>
                     </div>
+                    <a class="create-text" href="/userpage">Create Tour</a>
                     <div class="col-5">
-                        <button id="logout" class="btn btn-warning ">Log out</button>
-                    </div>
+                    <button id="logout" class="btn btn-warning ">Log out</button>
                 </div>
-                {{else}}
-
-                <div class="row">
-                    <div class="col-6 login-wrap">
-                        <a class="login-text" href="/login">Login</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="/signup" class="btn btn-warning">Sign up</a>
-                    </div>
                 </div>
-
-                {{/if}}
-
+                
             </div>
+            {{else}}
+            <div class="row">
+                <div class="col-1">
+                    <a href="/" id="home-btn">Home</a>
+                </div>
+                <div class="col-6 login-wrap">
+                    <a class="login-text" href="/login">Login</a>
+                </div>
+                <div class="col-6">
+                    <a href="/signup" class="btn btn-warning">Sign up</a>
+                </div>
+            </div>
+
+            {{/if}}
+
+        </div>
         </div>
 
     </header>

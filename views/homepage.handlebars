@@ -1,62 +1,54 @@
 <div>
-    <div class="slide-show-wrap">
-        <div class="slide-show">
-            <img alt="tour image" src="./img/site_seeing(art).jpg">
-            <img alt="tour image" src="./img/escape_the_city(mountain).jpg">
-            <img alt="tour image" src="./img/physical_activity(bike).jpg">
-            <img alt="tour image" src="./img/site_seeing(city).jpg">
-            <p>Book the tour and <br> Create your own tour... </p>
-            <a href="/signup" class="btn btn-warning">Get Started</a>
-        </div>
-    </div>
-
-    <div>
-        <div class="nav-wrap">
-            <div class="form-title-wrap">
-                <h3 class="form-title">FIND OUT YOUR FAVORITE TOUR</h3>
+    <div class="input-page-container">
+        <nav>
+            <h3>Choose a City: </h3>
+            <select class="form-control" id="city">
+                {{#if location}}
+                {{{select_location location}}}
+                {{else}}
+                <option selected> City </option>
+                <option>Sydney</option>
+                <option>Brisbane</option>
+                <option>Melbourne</option>\
+                {{/if}}
+            </select>
+            <h3>Choose a Category: </h3>
+            <select class="form-control" id="category">
+                {{#if category}}
+                {{{select_category category}}}
+                {{else}}
+                <option value="all" selected> All </option>
+                <option value="Site-Seeing">Site Seeing</option>
+                <option value="Escape-the-City">Escape the City</option>
+                <option value="Physical-Activity">Physical Activity</option>
+                <option value="Food-and-Drink">Food and Drink</option>
+                <option value="Sport-and-Culture">Sport and Culture</option>
+                {{/if}}
+            </select>
+            <div class="btn-wrap">
+                <button class="btn btn-warning search-btn" id="search-submit">
+                    SEARCH
+                </button>
             </div>
-            <nav class="row">
-                <div class="col-sm-6">
-                    <select name=”item” class="form-control" id="city">
-                        <option selected> City </option>
-                        <option>Sydney</option>
-                        <option>Brisbane</option>
-                        <option>Melbourne</option>
-                    </select>
-                </div>
-                <div class="col-sm-6 category-select">
-                    <select name=”item” class="form-control" id="category">
-                        <option selected> Category </option>
-                        <option>Site Seeing</option>
-                        <option>Escape the City</option>
-                        <option>Physical Activity</option>
-                        <option>Food and Drink</option>
-                        <option>Sport and Culture</option>
-                    </select>
-                </div>
-                <div class="btn-wrap">
-                    <button class="btn btn-warning search-btn">
-                        SEARCH
-                    </button>
-                </div>
-            </nav>
-        </div>
-        {{!-- {{#if tours.length}} --}}
-        <div class="my-tour-list result-list">
-
-            <div class="card-group row">
+        </nav>
+        {{#if tours.length}}
+        <div class="my-tour-list">
+            <h3 class="form-title">Find Your Next Tour!</h3>
+            <div class="container-fluid">
                 {{#each tours}}
-                <div class="card col-sm-4" style="width: 18rem">
-                    <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{title}}</h5>
-                        <a href="/tours/{{id}}" class="btn btn-warning">DETAIL</a>
+                <a href="/tours/{{id}}">
+                    <div class="card col-sm-4">
+                        <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{title}}</h5>
+                            <a href="/tours/{{id}}" class="btn btn-warning">DETAIL</a>
+                        </div>
                     </div>
-                </div>
+                </a>
                 {{/each}}
             </div>
         </div>
-        {{!-- {{/if}} --}}
+        {{/if}}
     </div>
     <script src="./js/homepage.js"></script>
 </div>
