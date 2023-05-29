@@ -45,11 +45,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 // These don't really do anything because the express static already uses the whole public folder
-// app.use('/tour', express.static('public'));
-// app.use('/tours', express.static('public'));
-// app.use('/userpage', express.static('public'));
-// app.use('/update', express.static('public'));
-// app.use('/create', express.static('public'));
+app.use('/tour', express.static('public'));
+app.use('/tours', express.static('public'));
+app.use('/userpage', express.static('public'));
+app.use('/update', express.static('public'));
 
 
 app.use(routes);

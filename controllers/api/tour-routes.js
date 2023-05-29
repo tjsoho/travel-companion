@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { parse } = require('handlebars');
 const { Tour, User } = require('../../models');
 
 const withAuth = require('../../utils/auth');
@@ -34,71 +33,73 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:difficulty_level', async (req, res) => {
-  try {
-    const tourData = await Tour.findAll({
-      where: {
-        difficulty_level: req.params.difficulty_level,
-      },
-    });
+// router.get('/:difficulty_level', async (req, res) => {
+//   try {
+//     const tourData = await Tour.findAll({
+//       where: {
+//         difficulty_level: req.params.difficulty_level,
+//       },
+//     });
 
-    if (!tourData) {
-      res.status(404).json({ message: 'No tour found with this difficulty level!' });
-      return;
-    }
+//     if (!tourData) {
+//       res.status(404).json({ message: 'No tour found with this difficulty level!' });
+//       return;
+//     }
 
-    res.status(200).json(tourData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.status(200).json(tourData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-router.get('/category/:category', async (req, res) => {
+// router.get('/category/:category', async (req, res) => {
 
-  const parseCategory = req.params.category.split('-').join(' ');
-  console.log(parseCategory);
-  try {
-    const tourData = await Tour.findAll({
-      where: {
-        category: parseCategory,
-      },
-    });
+//   const parseCategory = req.params.category.split('-').join(' ');
+//   console.log(parseCategory);
+//   try {
+//     const tourData = await Tour.findAll({
+//       where: {
+//         category: parseCategory,
+//       },
+//     });
 
-    if (!tourData) {
-      res.status(404).json({ message: 'No tour found with this category!' });
-      return;
-    }
+//     if (!tourData) {
+//       res.status(404).json({ message: 'No tour found with this category!' });
+//       return;
+//     }
 
-    res.status(200).json(tourData);
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
-});
-
-
+//     res.status(200).json(tourData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//     console.log(err);
+//   }
+// });
 
 
 
-router.get('/location/:location', async (req, res) => {
-  const parseLocation = req.params.location.split('-').join(' ');
-  try {
-    const tourData = await Tour.findAll({
-      where: {
-        location: parseLocation,
-      },
-    });
 
-    if (!tourData) {
-      res.status(404).json({ message: 'No tour found with this location!' });
-      return;
-    }
 
-    res.status(200).json(tourData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get('/location/:location', async (req, res) => {
+//   const parseLocation = req.params.location.split('-').join(' ');
+//   try {
+//     const tourData = await Tour.findAll({
+//       where: {
+//         location: parseLocation,
+//       },
+//     });
+
+//     if (!tourData) {
+//       res.status(404).json({ message: 'No tour found with this location!' });
+//       return;
+//     }
+
+//     res.status(200).json(tourData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
 
 
 router.put('/:id', async (req, res) => {
@@ -146,6 +147,49 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/:category/:location', async (req, res) => {
+
+  console.log(req.params);
+  try {
+      // Get all tours and JOIN with user data
+
+      let tourData;
+      // TO DO: !!!!! order from last to first?
+      if (req.params.category === 'all') {
+          tourData = await Tour.findAll({
+              where: {
+                  location: req.params.location,
+              },
+              include: [{ model: User }],
+          });
+      } else {
+          tourData = await Tour.findAll({
+              where: {
+                  category: req.params.category,
+                  location: req.params.location,
+              },
+              include: { model: User },
+          });
+      }
+      // Serialize data so the template can read it
+      const tours = tourData.map((post) => post.get({ plain: true }));
+      console.log(tours);
+      // TO DO: order from soonest to latest?
+
+      res.render('top', { tours });
+      // Pass serialized data and session flag into template
+      // res.json(tours);
+          // logged_in: req.session.logged_in,
+          // user_id: req.session.user_id,
+      // });
+  } catch (err) {
+      res.status(500).json(err);
+      console.log(err);
+  }
+});
+
+
 
 // get results by location
 
