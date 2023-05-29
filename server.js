@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/auth');
+const morgan = require('morgan');
 
 
 
@@ -30,6 +31,8 @@ const sess = {
         db: sequelize
     })
 };
+// Using morgan npm to view console logs for all the requests
+app.use(morgan('dev'));
 
 app.use(session(sess));
 
@@ -41,10 +44,12 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/tour', express.static('public'));
-app.use('/tours', express.static('public'));
-app.use('/userpage', express.static('public'));
-app.use('/update', express.static('public'));
+// These don't really do anything because the express static already uses the whole public folder
+// app.use('/tour', express.static('public'));
+// app.use('/tours', express.static('public'));
+// app.use('/userpage', express.static('public'));
+// app.use('/update', express.static('public'));
+// app.use('/create', express.static('public'));
 
 
 app.use(routes);

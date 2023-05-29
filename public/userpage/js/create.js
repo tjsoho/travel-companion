@@ -10,10 +10,7 @@ const newFormHandler = async (event) => {
     const img_name = document.querySelector('#image').value.trim();
     const person_limit = document.querySelector('#person-limit').value.trim();
     const cost = document.querySelector('#cost').value.trim();
-    // created user_id var
-    // const user_id = document.querySelector('#user_id').getAttribute("data-user-id");
-
-    // included user_id param to if condition and to body because it is needed
+  
     if (title && description && location && place && difficulty_level && category && img_name && person_limit && cost) {
         const response = await fetch(`/api/tour`, {
             method: 'POST',
@@ -50,7 +47,7 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('.create-btn')
+    .querySelector('.create-form')
     .addEventListener('submit', newFormHandler);
 
 document
