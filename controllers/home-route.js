@@ -9,12 +9,6 @@ const withAuth = require('../utils/auth');
 // API routes only do put, post, delete
 // this route interacts with the database models
 
-// router.get('/', async (req, res) => {
-
-//   res.redirect('/tours');
-
-// });
-
 router.get('/tours/:id', async (req, res) => {
   try {
     const tours = await Tour.findByPk(req.params.id, {
@@ -55,7 +49,7 @@ router.get('/', async (req, res) => {
     const tourData = tours.map((tours) => tours.get({ plain: true }));
     //TO DO: res.render page of all tours
     // console.log(tourData);
-    res.render('top', {
+    res.render('homepage', {
       tourData,
       loggedIn: req.session.logged_in,
     });
