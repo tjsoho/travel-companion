@@ -28,7 +28,7 @@
                 <button id="logout" class="btn btn-warning ">Log out</button>
                 {{else}}
 
-                <a href="/login">Login</a>
+                <a class="login-wrap" href="/login">Login</a>
                 <a href="/signup" class="btn btn-warning">Sign up</a>
 
                 {{/if}}
@@ -81,7 +81,8 @@
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{else}}
-    {{!-- <script src="/js/main.js"></script> --}}
+    {{!--
+    <script src="/js/main.js"></script> --}}
     {{/if}}
 
 </body>
