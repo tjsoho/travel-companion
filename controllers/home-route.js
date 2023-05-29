@@ -27,7 +27,7 @@ router.get('/tours/:id', async (req, res) => {
 
     res.render('tour-detail', {
       tourData,
-      loggedIn: req.session.logged_in,
+      logged_in: req.session.logged_in,
     });
     // res.status(200).json(tourData);
   } catch (err) {
@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
     // console.log(tourData);
     res.render('homepage', {
       tourData,
-      loggedIn: req.session.logged_in,
+      logged_in: req.session.logged_in,
     });
     // res.status(200).json(tourData);
   } catch (err) {
@@ -68,7 +68,7 @@ router.get('/login', (req, res,) => {
   }
 
   res.render('login', {
-    loggedIn: req.session.logged_in,
+    logged_in: req.session.logged_in,
   });
 });
 
@@ -79,7 +79,7 @@ router.get('/signup', (req, res,) => {
   }
 
   res.render('signup', {
-    loggedIn: req.session.logged_in,
+    logged_in: req.session.logged_in,
   });
 });
 

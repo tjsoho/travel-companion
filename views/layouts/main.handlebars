@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="/css/andrew.css">
-    <link rel="stylesheet" type="text/css" href="/css/sawako.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
@@ -21,15 +21,26 @@
             <div class="col-4">
                 <a href="/"><img id="logo" class="logo" src="./img/logotest.png" alt="logo"></a>
             </div>
-            <div class="col-4 nav-wrap">
+            <div class="col-4 top-nav-wrap">
                 {{#if logged_in}}
-
-                <a href="/userpage">Create Tour</a>
-                <button id="logout" class="btn btn-warning ">Log out</button>
+                <div class="row">
+                    <div class="col-7 login-wrap">
+                        <a class="create-text" href="/userpage">Create Tour</a>
+                    </div>
+                    <div class="col-5">
+                        <button id="logout" class="btn btn-warning ">Log out</button>
+                    </div>
+                </div>
                 {{else}}
 
-                <a class="login-wrap" href="/login">Login</a>
-                <a href="/signup" class="btn btn-warning">Sign up</a>
+                <div class="row">
+                    <div class="col-6 login-wrap">
+                        <a class="login-text" href="/login">Login</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="/signup" class="btn btn-warning">Sign up</a>
+                    </div>
+                </div>
 
                 {{/if}}
 
@@ -49,7 +60,7 @@
             <div class="col-sm-4   account-list-wrap">
                 <h7>Your Account</h7>
                 <ul class="footer-account-list">
-                    {{#if loggedIn}}
+                    {{#if logged_in}}
                     <li>
                         <a href="/" id="logout">Log out</a>
                     </li>
@@ -78,7 +89,7 @@
             <p>© 2023 Travel Companion Sydney, Australia. All Rights Reserved</p>
         </div>
     </footer>
-    {{#if loggedIn}}
+    {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{else}}
     {{!--
