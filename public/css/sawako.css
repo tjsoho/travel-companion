@@ -261,6 +261,21 @@ i {
     margin-top: 5px;
 }
 
+#home-btn {
+    padding: 20px;
+}
+
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+
+.card {
+    width: 31%;
+}
+
 @media screen and (max-width: 650px) {
 
     /* tour-detail */

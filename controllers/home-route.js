@@ -27,7 +27,7 @@ router.get('/tours/:id', async (req, res) => {
 
     res.render('tour-detail', {
       tourData,
-      loggedIn: req.session.logged_in,
+      logged_in: req.session.logged_in,
     });
     // res.status(200).json(tourData);
   } catch (err) {
@@ -37,7 +37,7 @@ router.get('/tours/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const tours = await Tour.findAll({
+    const tourData = await Tour.findAll({
       include: [
         {
           model: User,
@@ -46,12 +46,12 @@ router.get('/', async (req, res) => {
       ],
 
     });
-    const tourData = tours.map((tours) => tours.get({ plain: true }));
+    const tours = tourData.map((tour) => tour.get({ plain: true }));
     //TO DO: res.render page of all tours
     // console.log(tourData);
     res.render('homepage', {
-      tourData,
-      loggedIn: req.session.logged_in,
+      tours,
+      logged_in: req.session.logged_in,
     });
     // res.status(200).json(tourData);
   } catch (err) {
@@ -68,7 +68,7 @@ router.get('/login', (req, res,) => {
   }
 
   res.render('login', {
-    loggedIn: req.session.logged_in,
+    logged_in: req.session.logged_in,
   });
 });
 
@@ -79,14 +79,14 @@ router.get('/signup', (req, res,) => {
   }
 
   res.render('signup', {
-    loggedIn: req.session.logged_in,
+    logged_in: req.session.logged_in,
   });
 });
 
 // get and render create tour form
 // router.get('/userpage', withAuth, async (req, res) =>{
 //   res.render('create', {
-//     loggedIn: req.session.logged_in,
+//     logged_in: req.session.logged_in,
 //     user_id: req.session.user_id
 //   });
 // });
@@ -102,10 +102,11 @@ router.get('/userpage', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-
+    const createTour = true;
     res.render('create', {
       ...user,
-      logged_in: true
+      logged_in: req.session.logged_in,
+      createTour
     });
   } catch (err) {
     res.status(500).json(err);
@@ -136,6 +137,58 @@ router.get('/update/:id', withAuth, async (req, res) => {
   }
 });
 
+// get combo params
+router.get('/tours/:category/:location', async (req, res) => {
+
+  console.log(req.params);
+  try {
+      // Get all tours and JOIN with user data
+
+      let tourData;
+      // TO DO: !!!!! order from last to first?
+      if (req.params.category === 'all') {
+          tourData = await Tour.findAll({
+              where: {
+                  location: req.params.location,
+              },
+              include: [{ model: User }],
+          });
+      } else {
+          tourData = await Tour.findAll({
+              where: {
+                  category: req.params.category,
+                  location: req.params.location,
+              },
+              include: { model: User },
+          });
+      }
+      // Serialize data so the template can read it
+      const tours = tourData.map((post) => post.get({ plain: true }));
+      console.log(tours);
+      // TO DO: order from soonest to latest?
+
+      const category = req.params.category;
+      const location = req.params.location;
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+      console.log(location)
+      console.log(category)
+
+      res.render('homepage', { 
+        tours,
+        logged_in: req.session.logged_in,
+        category,
+        location,
+      });
+      // Pass serialized data and session flag into template
+      // res.json(tours);
+          // logged_in: req.session.logged_in,
+          // user_id: req.session.user_id,
+      // });
+  } catch (err) {
+      res.status(500).json(err);
+      console.log(err);
+  }
+});
 
 
 module.exports = router;

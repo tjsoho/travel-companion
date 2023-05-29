@@ -7,7 +7,7 @@
                 <p>Difficulty Level: {{ tourData.difficulty_level }}</p>
             </div>
             <div class="col-sm-4 category-wrap">
-                <p>Category: {{ tourData.category }}</p>
+                <p>Category: {{format_category tourData.category }}</p>
             </div>
         </div>
 
@@ -19,8 +19,8 @@
         </div>
         <div class="col-sm-4">
             <div class="book-wrap">
-                <p>From A$<span>{{tourData.cost }}</span> per person</p>
-                <p>Max number of participants:<span>{{ tourData.person_limit }}</span></p>
+                <p>From AU$<span>{{tourData.cost }}</span> per person</p>
+                <p>Max number of participants: <span>{{ tourData.person_limit }}</span></p>
                 <div class="bookbtn-wrap">
                     <button class="btn btn-warning bookbtn">BOOK NOW</button>
                 </div>
@@ -29,9 +29,9 @@
         </div>
     </div>
     <div class="text-wrap">
-        <p class="place-text"><span>City:</span>{{tourData.location}}</p>
-        <p class="place-text"><span>Place:</span>{{tourData.place}}</p>
-        <p class="description-text"><span>Description:</span>{{tourData.description}}</p>
+        <p class="place-text"><span>City: </span>{{tourData.location}}</p>
+        <p class="place-text"><span>Place: </span>{{tourData.place}}</p>
+        <p class="description-text"><span>Description: </span>{{tourData.description}}</p>
     </div>
 
 </div>

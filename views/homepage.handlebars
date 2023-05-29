@@ -1,32 +1,42 @@
 <div>
     <div class="input-page-container">
         <nav>
+            <h3>Choose a City: </h3>
             <select class="form-control" id="city">
+                {{#if location}}
+                {{{select_location location}}}
+                {{else}}
                 <option selected> City </option>
                 <option>Sydney</option>
                 <option>Brisbane</option>
-                <option>Melbourne</option>
+                <option>Melbourne</option>\
+                {{/if}}
             </select>
+            <h3>Choose a Category: </h3>
             <select class="form-control" id="category">
-                <option> all </option>
-                <option>Site Seeing</option>
-                <option>Escape the City</option>
-                <option>Physical Activity</option>
-                <option>Food and Drink</option>
-                <option>Sport and Culture</option>
+                {{#if category}}
+                {{{select_category category}}}
+                {{else}}
+                <option value="all" selected> All </option>
+                <option value="Site-Seeing">Site Seeing</option>
+                <option value="Escape-the-City">Escape the City</option>
+                <option value="Physical-Activity">Physical Activity</option>
+                <option value="Food-and-Drink">Food and Drink</option>
+                <option value="Sport-and-Culture">Sport and Culture</option>
+                {{/if}}
             </select>
             <div class="btn-wrap">
-                <button class="btn btn-warning search-btn">
+                <button class="btn btn-warning search-btn" id="search-submit">
                     SEARCH
                 </button>
             </div>
         </nav>
-        {{!-- {{#if tours.length}} --}}
+        {{#if tours.length}}
         <div class="my-tour-list">
-            <h3 class="form-title">FIND OUT YOUR FAVORITE TOUR</h3>
-            <div class="card-group row">
+            <h3 class="form-title">Find Your Next Tour!</h3>
+            <div class="container-fluid">
                 {{#each tours}}
-                <div class="card col-sm-4" style="width: 18rem">
+                <div class="card col-sm-4">
                     <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{title}}</h5>
@@ -36,7 +46,7 @@
                 {{/each}}
             </div>
         </div>
-        {{!-- {{/if}} --}}
+        {{/if}}
     </div>
     <script src="./js/homepage.js"></script>
 </div>

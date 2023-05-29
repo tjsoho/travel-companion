@@ -148,46 +148,6 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.get('/:category/:location', async (req, res) => {
-
-  console.log(req.params);
-  try {
-      // Get all tours and JOIN with user data
-
-      let tourData;
-      // TO DO: !!!!! order from last to first?
-      if (req.params.category === 'all') {
-          tourData = await Tour.findAll({
-              where: {
-                  location: req.params.location,
-              },
-              include: [{ model: User }],
-          });
-      } else {
-          tourData = await Tour.findAll({
-              where: {
-                  category: req.params.category,
-                  location: req.params.location,
-              },
-              include: { model: User },
-          });
-      }
-      // Serialize data so the template can read it
-      const tours = tourData.map((post) => post.get({ plain: true }));
-      console.log(tours);
-      // TO DO: order from soonest to latest?
-
-      res.render('top', { tours });
-      // Pass serialized data and session flag into template
-      // res.json(tours);
-          // logged_in: req.session.logged_in,
-          // user_id: req.session.user_id,
-      // });
-  } catch (err) {
-      res.status(500).json(err);
-      console.log(err);
-  }
-});
 
 
 
