@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="/css/andrew.css">
-    <link rel="stylesheet" type="text/css" href="/css/sawako.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
@@ -23,19 +23,35 @@
             </div>
 
             <div class="col-4 nav-wrap">
-                <a href="/" id="home-btn">Home</a>
+
                 {{#if logged_in}}
-
-                <a href="/userpage">Create Tour</a>
-                <button id="logout" class="btn btn-warning ">Log out</button>
-                {{else}}
-
-                <a class="login-wrap" href="/login">Login</a>
-                <a href="/signup" class="btn btn-warning">Sign up</a>
-
-                {{/if}}
-
+                <div class="row">
+                    <div class="col-3">
+                        <a href="/" id="home-btn">Home</a>
+                    </div>
+                    <a class="create-text" href="/userpage">Create Tour</a>
+                    <div class="col-5">
+                    <button id="logout" class="btn btn-warning ">Log out</button>
+                </div>
+                </div>
+                
             </div>
+            {{else}}
+            <div class="row">
+                <div class="col-1">
+                    <a href="/" id="home-btn">Home</a>
+                </div>
+                <div class="col-6 login-wrap">
+                    <a class="login-text" href="/login">Login</a>
+                </div>
+                <div class="col-6">
+                    <a href="/signup" class="btn btn-warning">Sign up</a>
+                </div>
+            </div>
+
+            {{/if}}
+
+        </div>
         </div>
 
     </header>

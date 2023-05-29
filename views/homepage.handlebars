@@ -36,13 +36,15 @@
             <h3 class="form-title">Find Your Next Tour!</h3>
             <div class="container-fluid">
                 {{#each tours}}
-                <div class="card col-sm-4">
-                    <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{title}}</h5>
-                        <a href="/tours/{{id}}" class="btn btn-warning">DETAIL</a>
+                <a href="/tours/{{id}}">
+                    <div class="card col-sm-4">
+                        <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{title}}</h5>
+                            <a href="/tours/{{id}}" class="btn btn-warning">DETAIL</a>
+                        </div>
                     </div>
-                </div>
+                </a>
                 {{/each}}
             </div>
         </div>
