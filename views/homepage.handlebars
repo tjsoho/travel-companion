@@ -1,6 +1,17 @@
 <div>
-    <div class="input-page-container">
-        <nav>
+    <div class="slide-show-wrap">
+        <div class="slide-show">
+            <img alt="tour image" src="./img/site_seeing(art).jpg">
+            <img alt="tour image" src="./img/escape_the_city(mountain).jpg">
+            <img alt="tour image" src="./img/physical_activity(bike).jpg">
+            <img alt="tour image" src="./img/site_seeing(city).jpg">
+            <p>Book the tour and <br> Create your own tour... </p>
+            <a href="/signup" class="btn btn-warning">Get Started</a>
+        </div>
+    </div>
+
+    <div>
+        <nav class="nav-wrap2">
             <h3>Choose a City: </h3>
             <select class="form-control" id="city">
                 {{#if location}}
@@ -12,43 +23,47 @@
                 <option>Melbourne</option>\
                 {{/if}}
             </select>
-            <h3>Choose a Category: </h3>
-            <select class="form-control" id="category">
-                {{#if category}}
-                {{{select_category category}}}
-                {{else}}
-                <option value="all" selected> All </option>
-                <option value="Site-Seeing">Site Seeing</option>
-                <option value="Escape-the-City">Escape the City</option>
-                <option value="Physical-Activity">Physical Activity</option>
-                <option value="Food-and-Drink">Food and Drink</option>
-                <option value="Sport-and-Culture">Sport and Culture</option>
-                {{/if}}
-            </select>
+            <div class="category-nav-wrap">
+                <h3>Choose a Category: </h3>
+                <select class="form-control" id="category">
+                    {{#if category}}
+                    {{{select_category category}}}
+                    {{else}}
+                    <option value="all" selected> All </option>
+                    <option value="Site-Seeing">Site Seeing</option>
+                    <option value="Escape-the-City">Escape the City</option>
+                    <option value="Physical-Activity">Physical Activity</option>
+                    <option value="Food-and-Drink">Food and Drink</option>
+                    <option value="Sport-and-Culture">Sport and Culture</option>
+                    {{/if}}
+                </select>
+            </div>
             <div class="btn-wrap">
-                <button class="btn btn-warning search-btn" id="search-submit">
+                <button class="btn btn-info search-btn" id="search-submit">
                     SEARCH
                 </button>
             </div>
         </nav>
-        {{#if tours.length}}
-        <div class="my-tour-list">
-            <h3 class="form-title">Find Your Next Tour!</h3>
-            <div class="container-fluid">
-                {{#each tours}}
-                <a href="/tours/{{id}}">
-                    <div class="card col-sm-4">
-                        <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{title}}</h5>
-                            <a href="/tours/{{id}}" class="btn btn-warning">DETAIL</a>
+        <div class="input-page-container ">
+
+            {{#if tours.length}}
+            <div class="my-tour-list">
+                <h3 class="form-title">Find Your Next Tour!</h3>
+                <div class="container-fluid">
+                    {{#each tours}}
+                    <a href="/tours/{{id}}">
+                        <div class="card col-sm-4">
+                            <img class="card-img-top img-thumbnail" src="./img/{{img_name }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{title}}</h5>
+                                <a href="/tours/{{id}}" class="btn btn-warning detailBtn-wrap">DETAIL</a>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                {{/each}}
+                    </a>
+                    {{/each}}
+                </div>
             </div>
+            {{/if}}
         </div>
-        {{/if}}
+        <script src="./js/homepage.js"></script>
     </div>
-    <script src="./js/homepage.js"></script>
-</div>
