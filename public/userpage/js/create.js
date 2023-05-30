@@ -23,8 +23,8 @@ const newFormHandler = async (event) => {
         });
         console.log(response);
         if (response.ok) {
-            // document.location.replace('/userpage');
-            document.location.replace(`/tours/${category}/${location}`);
+            document.location.replace('/userpage');
+            // document.location.replace(`/tours/${category}/${location}`);
         } else {
             alert('Failed to create tour');
         }
