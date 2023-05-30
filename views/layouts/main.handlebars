@@ -18,38 +18,41 @@
 <body>
     <header>
         <div class="row justify-content-between header-container">
-            <div class="col-4">
+            <div class="col-6">
                 <a href="/"><img id="logo" class="logo" src="./img/logotest.png" alt="logo"></a>
             </div>
 
-            <div class="col-4 nav-wrap">
+            <div class="col-5  top-nav-wrap">
 
                 {{#if logged_in}}
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-2">
+                        <a href="/" class="home-access" id="home-btn">Home</a>
+                    </div>
+                    <div class="col-6">
+                        <a class="create-text" href="/userpage">Create Tour</a>
+                    </div>
+                    <div class="col-4 logout-wrap">
+                        <button id="logout" class="btn btn-warning ">Log out</button>
+                    </div>
+                </div>
+
+
+                {{else}}
+                <div class="row">
+                    <div class="col-2">
                         <a href="/" id="home-btn">Home</a>
                     </div>
-                    <a class="create-text" href="/userpage">Create Tour</a>
+                    <div class="col-4 login-wrap">
+                        <a class="login-text" href="/login">Login</a>
+                    </div>
                     <div class="col-5">
-                    <button id="logout" class="btn btn-warning ">Log out</button>
+                        <a href="/signup" class="btn btn-warning signup-wrap">Sign up</a>
+                    </div>
                 </div>
-                </div>
-                
-            </div>
-            {{else}}
-            <div class="row">
-                <div class="col-1">
-                    <a href="/" id="home-btn">Home</a>
-                </div>
-                <div class="col-6 login-wrap">
-                    <a class="login-text" href="/login">Login</a>
-                </div>
-                <div class="col-6">
-                    <a href="/signup" class="btn btn-warning">Sign up</a>
-                </div>
-            </div>
 
-            {{/if}}
+                {{/if}}
+            </div>
 
         </div>
         </div>

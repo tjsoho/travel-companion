@@ -29,6 +29,16 @@ ul {
     color: white;
 }
 
+.btn-info,
+/* .btn-info:hover, */
+.btn-info:active,
+.btn-info:visited,
+.btn-info:focus {
+    background-color: #41644A;
+    border-color: #41644A;
+    color: white;
+}
+
 
 html {
     height: 100%;
@@ -50,7 +60,7 @@ a {
 .header-container {
     border-bottom: solid 2px #F2E3DB;
     padding-bottom: 5px;
-    /* padding-right: 16px; */
+    padding-right: 15px;
     height: 90px;
 
 
@@ -82,8 +92,21 @@ a {
 }
 
 .login-text {
-    font-size: 20px;
+    font-size: 17px;
 }
+
+#home-btn {
+    font-size: 17px;
+
+}
+
+#logout {
+    margin-right: 17px;
+}
+
+/* .signup-wrap {
+    margin-left: 17px;
+} */
 
 /* login and signup */
 .input-page-container {
@@ -295,6 +318,14 @@ i {
 
 
 /* top */
+.detailBtn-wrap {
+    margin-top: 10px;
+}
+
+.category-nav-wrap {
+    margin-top: 15px;
+}
+
 .search-btn {
     margin-top: 40px;
 }
@@ -307,6 +338,15 @@ i {
     justify-content: flex-end;
     width: fit-content;
     align-items: center;
+
+}
+
+.nav-wrap2 {
+    background-color: #F2E3DB;
+    padding: 50px;
+    margin-top: -10px;
+
+    color: #41644A;
 
 }
 
@@ -412,7 +452,7 @@ i {
 }
 
 .create-text {
-    width:fit-content;
+    width: fit-content;
 }
 
 @media screen and (max-width: 650px) {
@@ -456,6 +496,12 @@ i {
 
 
 @media screen and (max-width: 579px) {
+
+    #home-btn {
+        display: none;
+
+    }
+
     .category-select {
         margin-top: 10px;
     }
